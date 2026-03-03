@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal Documentación MCL 2026</title>
+    <style>
+        :root { --mcl-blue: #004b8d; --mcl-green: #a6ce39; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: #f0f4f8; overflow: hidden; }
+        
+        /* Encabezado con Logo */
+        header { 
+            background: white; 
+            padding: 10px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 4px solid var(--mcl-blue);
+            height: 90px;
+            box-sizing: border-box;
+        }
+        
+        /* Ajuste del logo para que se vea claro */
+        .logo-mcl img { 
+            height: 70px; 
+            width: auto; 
+            display: block;
+        } 
+
+        .slogan { text-align: right; }
+        .slogan-year { font-size: 26px; font-weight: 900; color: var(--mcl-blue); line-height: 1; }
+        .slogan-text { font-weight: bold; color: var(--mcl-blue); font-size: 14px; margin-top: 2px; }
+
+        /* Navegación */
+        nav { background: var(--mcl-blue); display: flex; justify-content: center; }
+        nav button { 
+            background: none; border: none; color: white; padding: 15px 25px; 
+            cursor: pointer; font-weight: bold; font-size: 15px; transition: 0.3s; 
+            border-bottom: 4px solid transparent; 
+        }
+        nav button:hover, nav button.active { 
+            background: rgba(255,255,255,0.1); 
+            border-bottom: 4px solid var(--mcl-green); 
+            color: var(--mcl-green); 
+        }
+
+        /* Contenedores de contenido */
+        .container { height: calc(100vh - 145px); width: 100%; }
+        .section { display: none; width: 100%; height: 100%; padding: 20px; box-sizing: border-box; }
+        .section.active { display: flex; flex-direction: column; }
+
+        /* Visores PDF */
+        embed { width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+        /* Estilo del buscador de fichas */
+        .search-container { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 8px; 
+            margin-bottom: 15px; 
+            text-align: center; 
+            border-bottom: 4px solid var(--mcl-green); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+        }
+        .legend { font-weight: bold; color: var(--mcl-blue); display: block; margin-bottom: 12px; font-size: 18px; }
+        input { 
+            padding: 12px; 
+            width: 320px; 
+            border: 2px solid #ddd; 
+            border-radius: 4px; 
+            font-size: 16px; 
+            outline: none; 
+            transition: 0.3s;
+        }
+        input:focus { border-color: var(--mcl-blue); }
+        .btn-search { 
+            padding: 12px 25px; 
+            background: var(--mcl-blue); 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 16px; 
+            margin-left: 10px; 
+        }
+        .btn-search:hover { background: #003566; }
+
+        .placeholder-text { color: #888; text-align: center; margin-top: 100px; font-style: italic; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Logo incorporado -->
+    <div class="logo-mcl">
+        <img src="MC LOGO.png" alt="Logo MCL"> 
+    </div>
+
+    <div class="slogan">
+        <div class="slogan-year">2026</div>
+        <div class="slogan-text">Integra • Optimiza • Crece</div>
+    </div>
+</header>
+
+<nav>
+    <button onclick="tab('p', this)" class="active">1. POLÍTICA DE CAMBIOS</button>
+    <button onclick="tab('a', this)">2. ALMACENAMIENTO Y MANEJO</button>
+    <button onclick="tab('f', this)">3. BÚSQUEDA DE FICHAS TÉCNICAS</button>
+</nav>
+
+<div class="container">
+    
+    <!-- PESTAÑA 1: POLÍTICA -->
+    <div id="p" class="section active">
+        <embed src="Política de Cambios y Devoluciones_clientes.pdf" type="application/pdf">
+    </div>
+
+    <!-- PESTAÑA 2: ALMACENAMIENTO -->
+    <div id="a" class="section">
+        <embed src="Recomendaciones de Almacenamiento y Manejo logo mcl.pdf" type="application/pdf">
+    </div>
+
+    <!-- PESTAÑA 3: BUSCADOR EXCLUSIVO DE FICHAS -->
+    <div id="f" class="section">
+        <div class="search-container">
+            <span class="legend">Busca aquí la ficha técnica Ejemplo: TT, TTG, ZU REF, ZU INKJET</span>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <input type="text" id="inputFicha" placeholder="Escribe el código (Ej: TD)..." onkeyup="if(event.key==='Enter') buscarFicha()">
+                <button class="btn-search" onclick="buscarFicha()">BUSCAR</button>
+            </div>
+        </div>
+        
+        <div id="resultadoBusqueda" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <p id="msg" class="placeholder-text">Ingresa un código arriba para visualizar la ficha técnica correspondiente.</p>
+            <embed id="visorBusqueda" src="" type="application/pdf" style="display: none;">
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Función para cambiar entre pestañas
+    function tab(id, btn) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // Función del buscador para la pestaña 3
+    function buscarFicha() {
+        const query = document.getElementById('inputFicha').value.trim().toUpperCase();
+        const visor = document.getElementById('visorBusqueda');
+        const mensaje = document.getElementById('msg');
+
+        // Mapeo de códigos a tus nombres reales de archivos PDF
+        const fichas = {
+            "TD": "TD.pdf",
+            "TT": "TT.pdf",
+            "TTG": "TTG.pdf",
+            "ZU INKJET": "ZU INKJET.pdf",
+            "ZU REF": "ZU REF.pdf",
+            "ZU": "ZU REF.pdf",
+            "ZUG": "ZUG.pdf"
+        };
+
+        if (fichas[query]) {
+            visor.src = fichas[query];
+            visor.style.display = "block";
+            mensaje.style.display = "none";
+        } else {
+            alert("No se encontró el archivo para: " + query + "\nIntenta con: TD, TT, TTG, ZU REF, ZU INKJET o ZUG.");
+            visor.style.display = "none";
+            mensaje.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
