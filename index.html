@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Portal Documentación Etiquetas MCL 2026</title>
+    <style>
+        :root { 
+            --mcl-blue: #004b8d; 
+            --mcl-green: #a6ce39; 
+            --bg-light: #f4f7f9;
+        }
+
+        /* CONFIGURACIÓN PARA PERMITIR SCROLL EN IOS */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* ENCABEZADO */
+        header { 
+            background: white; 
+            padding: 10px 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 4px solid var(--mcl-blue);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 80px;
+            box-sizing: border-box;
+        }
+        
+        .logo-mcl img { height: 45px; width: auto; } 
+
+        .slogan { text-align: right; }
+        .slogan-year { font-size: 20px; font-weight: 900; color: var(--mcl-blue); line-height: 1; }
+        .slogan-text { font-weight: bold; color: var(--mcl-blue); font-size: 11px; }
+
+        /* NAVEGACIÓN CON SCROLL HORIZONTAL EN MÓVIL */
+        nav { 
+            background: var(--mcl-blue); 
+            display: flex; 
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        nav button { 
+            background: none; border: none; color: white; padding: 15px 20px; 
+            cursor: pointer; font-weight: bold; font-size: 13px; 
+            border-bottom: 4px solid transparent; flex-shrink: 0;
+        }
+        
+        nav button.active { 
+            background: rgba(255,255,255,0.1); 
+            border-bottom: 4px solid var(--mcl-green); 
+            color: var(--mcl-green); 
+        }
+
+        /* CONTENEDORES */
+        .container { 
+            padding: 15px; 
+            box-sizing: border-box;
+        }
+        
+        .section { display: none; width: 100%; }
+        .section.active { display: block; }
+
+        /* VISORES PDF (Ajustados para iPhone) */
+        .pdf-wrapper {
+            width: 100%;
+            height: 65vh; 
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* BOTÓN PANTALLA COMPLETA */
+        .btn-fullscreen {
+            display: block;
+            background: var(--mcl-green);
+            color: var(--mcl-blue);
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        /* BUSCADOR */
+        .search-container { 
+            background: white; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-bottom: 15px; 
+            border-bottom: 4px solid var(--mcl-green); 
+        }
+        
+        .search-group { display: flex; flex-direction: column; gap: 10px; }
+
+        input { 
+            padding: 14px; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; 
+            width: 100%; box-sizing: border-box; -webkit-appearance: none;
+        }
+        
+        .btn-search { 
+            padding: 14px; background: var(--mcl-blue); color: white; border: none; 
+            border-radius: 6px; font-weight: bold; cursor: pointer;
+        }
+
+        /* RESPONSIVO PARA PC */
+        @media (min-width: 768px) {
+            .logo-mcl img { height: 65px; }
+            .search-group { flex-direction: row; }
+            .btn-search { width: 150px; }
+            .pdf-wrapper { height: 800px; }
+            .btn-fullscreen { display: none; } 
+            nav { justify-content: center; }
+        }
+
+        .placeholder-text { color: #888; text-align: center; margin-top: 50px; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-mcl">
+        <img src="MC LOGO.png" alt="Logo MCL"> 
+    </div>
+    <div class="slogan">
+        <div class="slogan-year">2026</div>
+        <div class="slogan-text">Integra • Optimiza • Crece</div>
+    </div>
+</header>
+
+<nav>
+    <button onclick="tab('p', this)" class="active">1. POLITICA DE CAMBIOS Y DEVOLUCIONES</button>
+    <button onclick="tab('a', this)">2. ALMACENAMIENTO</button>
+    <button onclick="tab('f', this)">3. FICHAS TÉCNICAS</button>
+</nav>
+
+<div class="container">
+    
+    <!-- PESTAÑA 1 -->
+    <div id="p" class="section active">
+        <h3 style="color: var(--mcl-blue);">Política de Cambios</h3>
+        <a href="Politica de Cambios y Devoluciones_clientes.pdf" target="_blank" class="btn-fullscreen">Ver Pantalla Completa ↗</a>
+        <div class="pdf-wrapper">
+            <iframe src="Politica de Cambios y Devoluciones_clientes.pdf"></iframe>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 2 -->
+    <div id="a" class="section">
+        <h3 style="color: var(--mcl-blue);">Almacenamiento y Manejo</h3>
+        <a href="Recomendaciones de Almacenamiento y Manejo logo mcl.pdf" target="_blank" class="btn-fullscreen">Ver Pantalla Completa ↗</a>
+        <div class="pdf-wrapper">
+            <iframe src="Recomendaciones de Almacenamiento y Manejo logo mcl.pdf"></iframe>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 3 -->
+    <div id="f" class="section">
+        <div class="search-container">
+            <span style="font-weight:bold; color:var(--mcl-blue); display:block; margin-bottom:10px;">Busca por código o material (Ej: TD, Polipropileno, TTG)</span>
+            <div class="search-group">
+                <input type="text" id="inputFicha" placeholder="Escribe el código o nombre..." onkeyup="if(event.key==='Enter') buscarFicha()">
+                <button class="btn-search" onclick="buscarFicha()">BUSCAR</button>
+            </div>
+        </div>
+        
+        <div id="resultadoBusqueda">
+            <p id="msg" class="placeholder-text">Ingresa un código para ver la ficha técnica.</p>
+            <a id="linkExterno" href="#" target="_blank" class="btn-fullscreen" style="display: none;">Ver Pantalla Completa ↗</a>
+            <div id="pdfWrapperFicha" class="pdf-wrapper" style="display: none;">
+                <iframe id="visorBusqueda" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function tab(id, btn) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        btn.classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function buscarFicha() {
+        // Normalizamos la entrada: quitar espacios, a minúsculas y quitar tildes básicas
+        let query = document.getElementById('inputFicha').value.trim().toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Esto quita tildes (é -> e)
+
+        const visor = document.getElementById('visorBusqueda');
+        const wrapper = document.getElementById('pdfWrapperFicha');
+        const link = document.getElementById('linkExterno');
+        const mensaje = document.getElementById('msg');
+
+        // Mapeo de términos (Sin tildes en las llaves porque el normalizer las quita)
+        const fichas = {
+            // TERMICO DIRECTO
+            "td": "TD.pdf",
+            "termico directo": "TD.pdf",
+
+            // TRANSFERENCIA TERMICA
+            "tt": "TT.pdf",
+            "transferencia termica": "TT.pdf",
+
+            // TTG (Transferencia Térmica Económico / Chino)
+            "ttg": "TTG.pdf",
+            "transferencia termica economico": "TTG.pdf",
+            "transferencia termica chino": "TTG.pdf",
+
+            // ZUG (Polipropileno Chino / Mismo criterio que TTG)
+            "zug": "ZUG.pdf",
+            "polipropileno": "ZUG.pdf",
+            "polipropileno chino": "ZUG.pdf",
+            "polipropileno economico": "ZUG.pdf",
+
+            // OTRAS VARIANTES ZU
+            "zu": "ZU.pdf",
+            "zu inkjet": "ZU INKJET.pdf",
+            "polipropileno inkjet": "ZU INKJET.pdf",
+            "zu ref": "ZU REF.pdf",
+            "polipropileno ref": "ZU REF.pdf"
+        };
+
+        const path = fichas[query];
+
+        if (path) {
+            visor.src = path;
+            link.href = path;
+            
+            wrapper.style.display = "block";
+            link.style.display = "block";
+            mensaje.style.display = "none";
+        } else {
+            alert("No se encontró ficha para: " + document.getElementById('inputFicha').value);
+            wrapper.style.display = "none";
+            link.style.display = "none";
+            mensaje.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
