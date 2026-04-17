@@ -152,7 +152,7 @@
 
 <nav>
     <button onclick="tab('p', this)" class="active">1. POLITICA DE CAMBIOS Y DEVOLUCIONES</button>
-    <button onclick="tab('a', this)">2. ALMACENAMIENTO</button>
+    <button onclick="tab('a', this)">2. ALMACENAMIENTO Y MANEJO</button>
     <button onclick="tab('f', this)">3. FICHAS TÉCNICAS</button>
 </nav>
 
@@ -182,14 +182,14 @@
             <span style="font-weight:bold; color:var(--mcl-blue); display:block; margin-bottom:10px;">Ingresa codigo de tu material</span>
             <div class="search-group">
                    <div class="search-container">
-                         <span style="font-weight:bold; color:var(black); display:block; margin-bottom:10px;">El codigo lo puedes encontrar en la caja, etiqueta del rollo o factura veras algo como (Ej: TD, TT, TTG, ZU, ZU REF, ZUG, ZU INKJET)</span>
+                         <span style="font-weight:bold; color:var(black); display:block; margin-bottom:10px; Font-size: 10px;">El codigo lo puedes encontrar en la caja, etiqueta del rollo o factura veras algo como (Ej: TD, TT, TTG, ZU, ZU REF, ZUG, ZU INKJET)</span>
                 <input type="text" id="inputFicha" placeholder="Escribe el codigo aquí(Ej: TD, TT, TTG, ZU, ZU REF, ZUG, ZU INKJET)" onkeyup="if(event.key==='Enter') buscarFicha()">
                 <button class="btn-search" onclick="buscarFicha()">BUSCAR</button>
             </div>
         </div>
         
         <div id="resultadoBusqueda">
-            <p id="msg" class="placeholder-text">Ingresa el codigo del material para ver la ficha técnica.</p>
+            <p id="msg" class="placeholder-text">Ingresa el código de tu material para obtener la ficha técnica correspondiente.</p>
             <a id="linkExterno" href="#" target="_blank" class="btn-fullscreen" style="display: none;">Ver Pantalla Completa ↗</a>
             <div id="pdfWrapperFicha" class="pdf-wrapper" style="display: none;">
                 <iframe id="visorBusqueda" src=""></iframe>
