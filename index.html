@@ -11,7 +11,7 @@
             --bg-light: #f4f7f9;
         }
 
-        /* CONFIGURACIÓN PARA PERMITIR SCROLL EN IOS */
+        /* CONFIGURACIÓN BASE */
         html, body {
             height: 100%;
             margin: 0;
@@ -38,12 +38,11 @@
         }
         
         .logo-mcl img { height: 45px; width: auto; } 
-
         .slogan { text-align: right; }
         .slogan-year { font-size: 20px; font-weight: 900; color: var(--mcl-blue); line-height: 1; }
         .slogan-text { font-weight: bold; color: var(--mcl-blue); font-size: 11px; }
 
-        /* NAVEGACIÓN CON SCROLL HORIZONTAL EN MÓVIL */
+        /* NAVEGACIÓN */
         nav { 
             background: var(--mcl-blue); 
             display: flex; 
@@ -52,7 +51,6 @@
             z-index: 999;
             overflow-x: auto;
             white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
         }
         
         nav button { 
@@ -68,15 +66,11 @@
         }
 
         /* CONTENEDORES */
-        .container { 
-            padding: 15px; 
-            box-sizing: border-box;
-        }
-        
+        .container { padding: 15px; min-height: 400px; }
         .section { display: none; width: 100%; }
         .section.active { display: block; }
 
-        /* VISORES PDF (Ajustados para iPhone) */
+        /* VISORES PDF */
         .pdf-wrapper {
             width: 100%;
             height: 65vh; 
@@ -87,45 +81,84 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             margin-bottom: 20px;
         }
-
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* BOTÓN PANTALLA COMPLETA */
         .btn-fullscreen {
-            display: block;
-            background: var(--mcl-green);
-            color: var(--mcl-blue);
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            font-size: 14px;
+            display: block; background: var(--mcl-green); color: var(--mcl-blue);
+            text-align: center; padding: 12px; text-decoration: none;
+            font-weight: bold; border-radius: 6px; margin-bottom: 10px; font-size: 14px;
         }
 
         /* BUSCADOR */
         .search-container { 
-            background: white; 
-            padding: 15px; 
-            border-radius: 8px; 
-            margin-bottom: 15px; 
-            border-bottom: 4px solid var(--mcl-green); 
+            background: white; padding: 15px; border-radius: 8px; 
+            margin-bottom: 15px; border-bottom: 4px solid var(--mcl-green); 
         }
-        
         .search-group { display: flex; flex-direction: column; gap: 10px; }
+        input { padding: 14px; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; width: 100%; }
+        .btn-search { padding: 14px; background: var(--mcl-blue); color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
 
-        input { 
-            padding: 14px; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; 
-            width: 100%; box-sizing: border-box; -webkit-appearance: none;
+        /* --- BOTÓN FLOTANTE --- */
+        .btn-flotante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--mcl-green);
+            color: var(--mcl-blue);
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: transform 0.3s ease;
+            font-size: 14px;
         }
-        
-        .btn-search { 
-            padding: 14px; background: var(--mcl-blue); color: white; border: none; 
-            border-radius: 6px; font-weight: bold; cursor: pointer;
-        }
+        .btn-flotante:hover { transform: scale(1.05); }
+        .btn-flotante img { width: 22px; height: auto; }
 
-        /* RESPONSIVO PARA PC */
+        /* --- SECCIÓN CONTACTOS FINAL --- */
+        .contact-footer {
+            background: white;
+            padding: 30px 15px;
+            border-top: 5px solid var(--mcl-blue);
+            margin-top: 40px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid var(--mcl-green);
+        }
+        .contact-title { display: block; color: var(--mcl-blue); font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        .contact-name { display: block; font-size: 18px; font-weight: 900; margin: 10px 0; color: #333; }
+        .contact-actions { display: flex; justify-content: center; gap: 15px; }
+        .btn-action {
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .btn-action:hover { background: var(--mcl-green); }
+        .btn-action img { width: 24px; height: 24px; }
+
         @media (min-width: 768px) {
             .logo-mcl img { height: 65px; }
             .search-group { flex-direction: row; }
@@ -134,15 +167,13 @@
             .btn-fullscreen { display: none; } 
             nav { justify-content: center; }
         }
-
-        .placeholder-text { color: #888; text-align: center; margin-top: 50px; font-style: italic; }
     </style>
 </head>
 <body>
 
-<!-- BOTÓN FLOTANTE LLAMATIVO -->
+<!-- BOTÓN FLOTANTE -->
 <a href="#contacto-seccion" class="btn-flotante">
-    <img src="whatsapp.png" style="width: 20px;" alt=""> 
+    <img src="whatsapp.png" alt="Icono"> 
     CONTÁCTANOS
 </a>
     
@@ -157,8 +188,8 @@
 </header>
 
 <nav>
-    <button onclick="tab('p', this)" class="active">1. POLITICA DE CAMBIOS Y DEVOLUCIONES</button>
-    <button onclick="tab('a', this)">2. ALMACENAMIENTO Y MANEJO</button>
+    <button onclick="tab('p', this)" class="active">1. POLÍTICA DE CAMBIOS</button>
+    <button onclick="tab('a', this)">2. ALMACENAMIENTO</button>
     <button onclick="tab('f', this)">3. FICHAS TÉCNICAS</button>
 </nav>
 
@@ -166,7 +197,7 @@
     
     <!-- PESTAÑA 1 -->
     <div id="p" class="section active">
-        <h3 style="color: var(--mcl-blue);">Política de Cambios</h3>
+        <h3 style="color: var(--mcl-blue);">Política de Cambios y Devoluciones</h3>
         <a href="Politica de Cambios y Devoluciones_clientes.pdf" target="_blank" class="btn-fullscreen">Ver Pantalla Completa ↗</a>
         <div class="pdf-wrapper">
             <iframe src="Politica de Cambios y Devoluciones_clientes.pdf"></iframe>
@@ -185,27 +216,61 @@
     <!-- PESTAÑA 3 -->
     <div id="f" class="section">
         <div class="search-container">
-            <span style="font-weight:bold; color:var(--mcl-blue); display:block; margin-bottom:10px;">Ingresa codigo de tu material</span>
+            <span style="font-weight:bold; color:var(--mcl-blue); display:block; margin-bottom:10px;">Ingresa código de tu material</span>
+            <p style="font-size: 11px; color: #666; margin-bottom: 10px;">El código lo puedes encontrar en la caja o factura (Ej: TD, TT, TTG, ZU, ZUG)</p>
             <div class="search-group">
-                   <div class="search-container">
-                         <span style="font-weight:bold; color:var(black); display:block; margin-bottom:10px; Font-size: 10px;">El codigo lo puedes encontrar en la caja, etiqueta del rollo o factura veras algo como (Ej: TD, TT, TTG, ZU, ZU REF, ZUG, ZU INKJET)</span>
-                <input type="text" id="inputFicha" placeholder="Escribe el codigo aquí(Ej: TD, TT, TTG, ZU, ZU REF, ZUG, ZU INKJET)" onkeyup="if(event.key==='Enter') buscarFicha()">
+                <input type="text" id="inputFicha" placeholder="Escribe el código aquí..." onkeyup="if(event.key==='Enter') buscarFicha()">
                 <button class="btn-search" onclick="buscarFicha()">BUSCAR</button>
             </div>
         </div>
         
         <div id="resultadoBusqueda">
-            <p id="msg" class="placeholder-text; Font-size: 18px;">Ingresa el código de tu material para obtener la ficha técnica correspondiente.</p>
+            <p id="msg" style="text-align:center; color:#888; font-style:italic; margin-top:30px;">Ingresa el código para obtener la ficha técnica.</p>
             <a id="linkExterno" href="#" target="_blank" class="btn-fullscreen" style="display: none;">Ver Pantalla Completa ↗</a>
             <div id="pdfWrapperFicha" class="pdf-wrapper" style="display: none;">
                 <iframe id="visorBusqueda" src=""></iframe>
             </div>
         </div>
     </div>
-
 </div>
 
+<!-- SECCIÓN DE CONTACTOS (Visible en todas las pestañas porque está fuera de .section) -->
+<footer class="contact-footer" id="contacto-seccion">
+    <h4 style="color: var(--mcl-blue); margin: 0 0 25px 0; font-size: 18px; text-align: center; font-weight: 900;">¿NECESITAS AYUDA? CONTACTA CON NUESTRO EQUIPO</h4>
+    
+    <div class="contact-grid">
+        <div class="contact-card">
+            <span class="contact-title">Soporte Técnico</span>
+            <span class="contact-name">Paola Orellana</span>
+            <div class="contact-actions">
+                <a href="https://wa.me/+50379157707" class="btn-action"><img src="whatsapp.png" alt="W"></a>
+                <a href="tel:+50379157707" class="btn-action"><img src="Telefono.png" alt="T"></a>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <span class="contact-title">Ventas</span>
+            <span class="contact-name">Sofía Osorio</span>
+            <div class="contact-actions">
+                <a href="https://wa.me/+50376747490" class="btn-action"><img src="whatsapp.png" alt="W"></a>
+                <a href="tel:+50376961182" class="btn-action"><img src="Telefono.png" alt="T"></a>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <span class="contact-title">Departamento de Calidad</span>
+            <span class="contact-name">Carlos Burgos</span>
+            <div class="contact-actions">
+                <a href="https://wa.me/+50378730384" class="btn-action"><img src="whatsapp.png" alt="W"></a>
+                <a href="tel:+50378730384" class="btn-action"><img src="Telefono.png" alt="T"></a>
+            </div>
+        </div>
+    </div>
+    <p style="text-align: center; font-size: 12px; color: #aaa; margin-top: 30px;">&copy; 2026 MC LOGO - Todos los derechos reservados.</p>
+</footer>
+
 <script>
+    // Función para cambiar de pestañas
     function tab(id, btn) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
@@ -214,126 +279,44 @@
         window.scrollTo(0,0);
     }
 
+    // Función de búsqueda de fichas
     function buscarFicha() {
-        // Normalizamos la entrada: quitar espacios, a minúsculas y quitar tildes básicas
         let query = document.getElementById('inputFicha').value.trim().toLowerCase()
-            .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Esto quita tildes (é -> e)
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
         const visor = document.getElementById('visorBusqueda');
         const wrapper = document.getElementById('pdfWrapperFicha');
         const link = document.getElementById('linkExterno');
         const mensaje = document.getElementById('msg');
 
-        // Mapeo de términos (Sin tildes en las llaves porque el normalizer las quita)
         const fichas = {
-            // TERMICO DIRECTO
             "td": "TD.pdf",
             "termico directo": "TD.pdf",
-
-            // TRANSFERENCIA TERMICA
             "tt": "TT.pdf",
             "transferencia termica": "TT.pdf",
-
-            // TTG (Transferencia Térmica Económico / Chino)
             "ttg": "TTG.pdf",
             "transferencia termica economico": "TTG.pdf",
-            "transferencia termica chino": "TTG.pdf",
-
-            // ZUG (Polipropileno Chino / Mismo criterio que TTG)
             "zug": "ZUG.pdf",
-            "polipropileno": "ZUG.pdf",
             "polipropileno chino": "ZUG.pdf",
-            "polipropileno economico": "ZUG.pdf",
-
-            // OTRAS VARIANTES ZU
             "zu": "ZU.pdf",
             "zu inkjet": "ZU INKJET.pdf",
-            "polipropileno inkjet": "ZU INKJET.pdf",
-            "zu ref": "ZU REF.pdf",
-            "polipropileno ref": "ZU REF.pdf"
+            "zu ref": "ZU REF.pdf"
         };
-    
-      }
 
         const path = fichas[query];
 
         if (path) {
             visor.src = path;
             link.href = path;
-            
             wrapper.style.display = "block";
             link.style.display = "block";
             mensaje.style.display = "none";
         } else {
-            alert("No se encontró ficha para: " + document.getElementById('inputFicha').value);
+            alert("No se encontró ficha para el código ingresado.");
             wrapper.style.display = "none";
             link.style.display = "none";
             mensaje.style.display = "block";
-            </div>
-        </div>
-        
-    </div>
-            
-<!-- SECCIÓN DE CONTACTOS AL FINAL -->
-<aside class="contact-sidebar" id="contacto-seccion">
-    <h4 style="color: var(--mcl-blue); margin: 0 0 20px 0; font-size: 16px; text-align: center; font-weight: 900;">¿NECESITAS AYUDA? CONTACTA CON NUESTRO EQUIPO</h4>
-    
-    <div class="contact-grid">
-        <div class="contact-card">
-            <span class="contact-title">Soporte Tecnico</span>
-            <div class="contact-name">Paola Orellana</div>
-            <div class="contact-actions">
-                <a href="https://wa.me/+50379157707" class="btn-action" title="WhatsApp">
-                    <img src="whatsapp.png" alt="WhatsApp">
-                </a>
-                <a href="tel:+50379157707" class="btn-action" title="Llamar">
-                    <img src="Telefono.png" alt="Llamar">
-                </a>
-            </div>
-        </div>
-
-        <div class="contact-card">
-            <span class="contact-title">Ventas</span>
-            <div class="contact-name">Sofia Osorio</div>
-            <div class="contact-actions">
-                <a href="https://wa.me/+50376747490" class="btn-action" title="WhatsApp">
-                    <img src="whatsapp.png" alt="WhatsApp">
-                </a>
-                <a href="tel:+50376961182" class="btn-action" title="Llamar">
-                    <img src="Telefono.png" alt="Llamar">
-                </a>
-            </div>
-        </div>
-
-        <div class="contact-card">
-            <span class="contact-title">Departamento de Calidad</span>
-            <div class="contact-name">Carlos Burgos</div>
-            <div class="contact-actions">
-                <a href="https://wa.me/+50378730384" class="btn-action" title="WhatsApp">
-                    <img src="whatsapp.png" alt="WhatsApp">
-                </a>
-                <a href="tel:+50378730384" class="btn-action" title="Llamar">
-                    <img src="Telefono.png" alt="Llamar">
-                </a>
-            </div>
-        </div>
-    </div>
-</aside>
-
-<script>
-    function tab(id, btn) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        btn.classList.add('active');
-        window.scrollTo(0,0);
-    }
-
-    function verPdf(archivo, btn) {
-        document.getElementById('visorFichas').src = archivo;
-        document.getElementById('btnFullFicha').href = archivo;
-        document.querySelectorAll('.btn-ficha').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        }
     }
 </script>
 
