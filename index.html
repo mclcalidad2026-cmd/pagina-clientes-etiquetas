@@ -89,10 +89,13 @@
             font-weight: bold; border-radius: 6px; margin-bottom: 10px; font-size: 14px;
         }
 
-        /* BUSCADOR */
+        /* BUSCADOR CORREGIDO PARA NO ESTIRARSE */
         .search-container { 
             background: white; padding: 20px; border-radius: 8px; 
-            margin-bottom: 20px; border-bottom: 4px solid var(--mcl-green); 
+            margin-bottom: 20px; border-bottom: 4px solid var(--mcl-green);
+            max-width: 700px; /* Limita el ancho en PC */
+            margin-left: auto; /* Centra el buscador */
+            margin-right: auto; /* Centra el buscador */
         }
         .search-group { display: flex; flex-direction: column; gap: 10px; }
         input { padding: 14px; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; width: 100%; }
