@@ -140,6 +140,12 @@
 </head>
 <body>
 
+<!-- BOTÓN FLOTANTE LLAMATIVO -->
+<a href="#contacto-seccion" class="btn-flotante">
+    <img src="whatsapp.png" style="width: 20px;" alt=""> 
+    CONTÁCTANOS
+</a>
+    
 <header>
     <div class="logo-mcl">
         <img src="MC LOGO.png" alt="Logo MCL"> 
@@ -246,6 +252,8 @@
             "zu ref": "ZU REF.pdf",
             "polipropileno ref": "ZU REF.pdf"
         };
+    
+      }
 
         const path = fichas[query];
 
@@ -261,7 +269,71 @@
             wrapper.style.display = "none";
             link.style.display = "none";
             mensaje.style.display = "block";
-        }
+            </div>
+        </div>
+        
+    </div>
+            
+<!-- SECCIÓN DE CONTACTOS AL FINAL -->
+<aside class="contact-sidebar" id="contacto-seccion">
+    <h4 style="color: var(--mcl-blue); margin: 0 0 20px 0; font-size: 16px; text-align: center; font-weight: 900;">¿NECESITAS AYUDA? CONTACTA CON NUESTRO EQUIPO</h4>
+    
+    <div class="contact-grid">
+        <div class="contact-card">
+            <span class="contact-title">Soporte Tecnico</span>
+            <div class="contact-name">Paola Orellana</div>
+            <div class="contact-actions">
+                <a href="https://wa.me/+50379157707" class="btn-action" title="WhatsApp">
+                    <img src="whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="tel:+50379157707" class="btn-action" title="Llamar">
+                    <img src="Telefono.png" alt="Llamar">
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <span class="contact-title">Ventas</span>
+            <div class="contact-name">Sofia Osorio</div>
+            <div class="contact-actions">
+                <a href="https://wa.me/+50376747490" class="btn-action" title="WhatsApp">
+                    <img src="whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="tel:+50376961182" class="btn-action" title="Llamar">
+                    <img src="Telefono.png" alt="Llamar">
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <span class="contact-title">Departamento de Calidad</span>
+            <div class="contact-name">Carlos Burgos</div>
+            <div class="contact-actions">
+                <a href="https://wa.me/+50378730384" class="btn-action" title="WhatsApp">
+                    <img src="whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="tel:+50378730384" class="btn-action" title="Llamar">
+                    <img src="Telefono.png" alt="Llamar">
+                </a>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<script>
+    function tab(id, btn) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        btn.classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function verPdf(archivo, btn) {
+        document.getElementById('visorFichas').src = archivo;
+        document.getElementById('btnFullFicha').href = archivo;
+        document.querySelectorAll('.btn-ficha').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
     }
 </script>
 
